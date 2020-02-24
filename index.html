@@ -183,7 +183,7 @@
           </section>
           <section>
             <p>A 360 degree image</p>
-            <pre><code>&lt;!doctype html&gt;
+            <pre><code  data-trim class="line-numbers">&lt;!doctype html&gt;
 &lt;!--
 Copyright 2016 The Chromium Authors. All rights reserved.
 Use of this source code is governed by a BSD-style license that can be
@@ -480,13 +480,13 @@ found in the LICENSE file.
           </section>
           <section>
             <p>A 360 degree panorama photo in Aframe</p>
-            <pre class="fragment"><code>&lt;!DOCTYPE html&gt;
+            <pre><code  data-trim class="line-numbers" data-highlight-lines="7,10,11,12">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-  &lt;meta charset=&quot;utf-8&quot;&gt;
-  &lt;title&gt;360&amp;deg; Image&lt;/title&gt;
-  &lt;meta name=&quot;description&quot; content=&quot;360&amp;deg; Image - A-Frame&quot;&gt;
-  &lt;script src=&quot;../../../dist/aframe-master.js&quot;&gt;&lt;/script&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;360&amp;deg; Image&lt;/title&gt;
+    &lt;meta name=&quot;description&quot; content=&quot;360&amp;deg; Image - A-Frame&quot;&gt;
+    &lt;script src=&quot;../../../dist/aframe-master.js&quot;&gt;&lt;/script&gt;
   &lt;/head&gt;
   &lt;body&gt;
   &lt;a-scene&gt;
@@ -588,7 +588,7 @@ found in the LICENSE file.
               </li>
               <li class="fragment">Declarative implementation</li>
             </ul>
-            <pre><code data-trim>
+            <pre><code data-trim class="line-numbers" data-highlight-lines="2,3,6,8,9,12,14">
 &lt;a-scene&gt;
   &lt;a-entity id=&quot;rig&quot; :position=&quot;cameraPosition&quot;&gt;
     &lt;a-entity id=&quot;camera&quot; camera look-controls
@@ -652,7 +652,8 @@ found in the LICENSE file.
           { src: "plugin/markdown/marked.js" },
           { src: "plugin/markdown/markdown.js" },
           { src: "plugin/highlight/highlight.js" },
-          { src: "plugin/notes/notes.js", async: true }
+          { src: "plugin/notes/notes.js", async: true },
+          { src: "plugin/line-numbers/line-numbers.js" }
         ]
       });
     </script>
