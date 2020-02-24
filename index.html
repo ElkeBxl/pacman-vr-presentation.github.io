@@ -480,7 +480,7 @@ found in the LICENSE file.
           </section>
           <section>
             <p>A 360 degree panorama photo in Aframe</p>
-            <pre class="fragement"><code>&lt;!DOCTYPE html&gt;
+            <pre class="fragment"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
   &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -556,18 +556,92 @@ found in the LICENSE file.
               <li>Collecting dots</li>
             </ul>
           </section>
+          <section>
+            <p>The maze</p>
+            <ul>
+              <li>Height of the walls?</li>
+              <li>Use of colours?</li>
+              <li>Themeing?</li>
+            </ul>
+          </section>
+          <section>
+            <p>Themeing</p>
+            <ul>
+              <li class="fragment">As classic as possible</li>
+              <li class="fragment">Horror version?</li>
+              <li class="fragment">Something completely different?</li>
+            </ul>
+            <p class="fragment">
+              Started of with horror version... ended with classic
+            </p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Implementing the game</h2>
+          </section>
+          <section>
+            <h3>Usage of Vue</h3>
+            <ul>
+              <li class="fragment">
+                <em>computed</em> properties = reactivity
+              </li>
+              <li class="fragment">Declarative implementation</li>
+            </ul>
+            <pre><code data-trim>
+&lt;a-scene&gt;
+  &lt;a-entity id=&quot;rig&quot; :position=&quot;cameraPosition&quot;&gt;
+    &lt;a-entity id=&quot;camera&quot; camera look-controls
+      position=&quot;0 1.6 0&quot; ref=&quot;camera&quot;&gt;&lt;/a-entity&gt;
+  &lt;/a-entity&gt;
+  &lt;a-entity light=&quot;type: point; castShadow: false; intensity: 1;&quot;
+    :position=&quot;cameraPosition&quot;&gt;&lt;/a-entity&gt;
+  &lt;a-sky color=&quot;#111&quot;&gt;&lt;/a-sky&gt;
+  &lt;a-plane rotation=&quot;-90 0 0&quot; color=&quot;#ccc&quot;
+    height=&quot;750&quot; width=&quot;630&quot;
+    position=&quot;0 -1.5 0&quot;&gt;&lt;/a-plane&gt;
+  &lt;a-sphere color=&quot;red&quot; :radius=&quot;blockSize / 2&quot;
+    :position=&quot;ghostPosition&quot;&gt;&lt;/a-sphere&gt;
+  &lt;maze :maze=&quot;maze&quot; :blockSize=&quot;blockSize&quot;&gt;&lt;/maze&gt;
+&lt;/a-scene&gt;
+				</code></pre>
+          </section>
+          <section>
+            <h3>The superbasic setup</h3>
+            <ul>
+              <li class="fragment"><em>a-sky</em> + <em>a-plane</em></li>
+              <li class="fragment">
+                Free movement on <em>x-axis</em>, <em>y-axis</em> and
+                <em>z-axis</em>
+              </li>
+            </ul>
+            <img src="assets/right-hand-rule.png" class="fragment" alt="" />
+          </section>
+          <section>
+            <h3>Rendering the maze</h3>
+            <ul>
+              <li class="fragment">1 wall = 1 <em>a-plane</em>?</li>
+              <li class="fragment">Usage of <em>a-box</em> for the walls</li>
+              <li class="fragment">More advanced: render it in Blender</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Restriction of movement</h3>
+            <ul>
+              <li class="fragment"><em>y-axis</em> fixed to 0</li>
+              <li class="fragment">
+                Collision detection
+                <ul>
+                  <li><em>aframe-physics-system</em></li>
+                  <li>Own implementation</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
         </section>
       </div>
     </div>
-
-    <script src="js/reveal.js">
-      window.document.onload = function(e) {
-        document.querySelectorAll("code").forEach(function(element) {
-          element.innerHTML = element.innerHTML.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-        });
-      }
-    </script>
-
+    <script src="js/reveal.js"></script>
     <script>
       // More info about config & dependencies:
       // - https://github.com/hakimel/reveal.js#configuration
