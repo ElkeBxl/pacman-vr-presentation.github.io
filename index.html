@@ -1,187 +1,587 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-		<title>Pacman VR in Vue</title>
+    <title>Pacman VR in Vue</title>
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/black.css" />
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css" />
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Pacman VR in Vue</section>
-				<section>
-					<section>Pacman</section>
-					<section>
-						<img src="assets/toru-iwatani.jpg" style="float: right" width="30%" />
-						<ul style="width: 60%; float: left">
-							<li class="fragment">1980</li class="fragment">
-							<li class="fragment">Toru Iwatani</li>
-							<!-- referencing the mouth movement of opening and closing in succession -->
-							<li class="fragment">Originally named Pakkuman, based on "paku paku taberu"</li>
-							<li class="fragment">Multiple versions</li>
-							<li class="fragment">Highest-grossing and best-selling game series of all time: +$14 billion</li>
-						</ul>
-					</section>
-					<section>
-						<p>Pac-man and women</p>
-						<ul style="width: 50%; float: left;">
-							<li class="fragment">Arcade games targeted for men</li>
-							<li class="fragment">Non-violent, cheerful video game</li>
-							<li class="fragment">Based on what women like to do in their time...</li>
-						</ul>
-						<img class="fragment" src="assets/ijustine-pacman-cake.jpg" style="float: right" width="40%" />
-						<!-- watani felt that arcade games only appealed to men for their crude graphics and violence,[16] and that arcades in general were seen as seedy environments.[18] For his next project, Iwatani chose to create a non-violent, cheerful video game that appealed mostly to women,[19] as he believed that attracting women and couples into arcades would potentially make them appear to be much-more family friendly in tone.[16] Iwatani began thinking of things that women liked to do in their time; he decided to center his game around eating, basing this off of women liking to eat desserts and other sweets.[20] His game was initially called Pakkuman, based on the Japanese onomatopoeia term “paku paku taberu”,[21] referencing the mouth movement of opening and closing in succession.[22] -->
-					</section>
-					<!-- https://www.geek.com/games/original-pac-man-created-to-attract-women-to-arcades-because-women-like-to-eat-1643664/ -->
-					<section>
-						<p>Electronic Game Magazin in 1982:</p>
-						<img src="assets/women-arcades-promo.jpg" class="stretch" />
-					</section>
-					<section>
-						<div style="width: 49%; float: left;"><img src="assets/space-invaders-poster.jpg" class="stretch" /></div>
-						<div style="width: 49%; float: left;"><img src="assets/berzerk-poster.jpg" class="stretch" /></div>
-					</section>
-					<section><img src="assets/original-pacman.jpg" class="stretch" /></section>
-					<!-- https://www.youtube.com/watch?v=avOOt3Z8bhs -->
-					<section>
-						<video data-autoplay src="assets/vr-pacman-1996.mp4" class="stretch"></video>
-					</section>
-					<!-- https://www.vrs.org.uk/dr-jonathan-walden-virtuality-new-reality-promise-two-decades-soon/ -->
-					<section>
-						<ul>
-							<li>Arcade game</li>
-							<li>Made by Virtuality in 1996</li>
-							<li>Visette virtual reality visor (276x372 resolution / eye)</li>
-							<li>Moveable joystick</li>
-							<li>Tracking was done with magnets</li>
-							<li>Stand-up and sit-down versions</li>
-						</ul>
-					</section>
-					<section><img src="assets/virtuality-standup-unit.jpeg" class="stretch" /></section>
-					<section><img src="assets/virtuality-sitdown-unit.jpeg" class="stretch" /></section>
-				</section>
-				<section>
-					<section>VR today</section>
-					<section><img src="assets/htc-vive-closeup.jpeg" class="stretch" /></section>
-					<section><img src="assets/htc-vive.jpeg" class="stretch" /></section>
-					<section><img src="assets/vr-connected-to-computer.jpeg" class="stretch" /></section>
-					<section>
-						<p>Google wanted it cheaper!</p>
-						<img src="assets/google-cardboard.jpg" class="stretch" />
-					</section>
-					<!-- https://medium.com/samsung-internet-dev/eleven-examples-of-how-webvr-is-being-used-today-cbcb214b816c -->
-				</section>
-				<section>
-					<section>VR on the web</section>
-					<section>
-						<p>WebVR</p>
-						<ul>
-							<li class="fragment">Mozilla</li>
-							<li class="fragment">Spring of 2014</li>
-							<li class="fragment">
-								Goals:
-								<ul>
-									<li>Detect VR devices</li>
-									<li>Query capabilities</li>
-									<li>Poll position and orientation</li>
-									<li>Render with appropriate framerate</li>
-								</ul>
-							</li>
-						</ul>
-					</section>
-					<section>
-						<p>WebVR becomes WebXR</p>
-						<ul>
-							<li>Addition of AR</li>
-							<li>Proper emulator extensions</li>
-						</ul>
-						<p>https://blog.mozvr.com/webxr-emulator-extension/</p>
-					</section>
-					<section><img src="assets/webxr-emulator.gif" alt="" class="stretch"></section>
-				</section>
-				<section>
-					<section>Defining the game concept</section>
-					<section>
-						<p>Game features</p>
-						<ul>
-							<li>Maze</li>
-							<li>Move within the maze</li>
-							<li>Add 1 ghost</li>
-							<li>Collecting dots</li>
-						</ul>
-					</section>
-				</section>
-				<section>
-					<section>
-						<p>The technology we'll use</p>
-						<img src="assets/aframe.png" alt="" class="stretch" />
-					</section>
-					<section>
-						<p>Features</p>
-						<ul>
-							<li>HTML</li>
-							<li>Declarative, extensible and composable structure to three.js</li>
-							<li>Supports most VR headsets</li>
-							<li>Visual inspector</li>
-						</ul>
-						<img src="assets/aframe-inspector.gif" alt="" class="stretch">
-					</section>
-					<section>
-						<p>Building a scene</p>
-						<img src="assets/aframe-ascene.png" alt="" class="stretch" />
-					</section>
-					<section>
-						<pre><code data-trim data-noescape><html>
-							<head>
-							  <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
-							</head>
-							<body>
-							  <a-scene>
-								<a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-								<a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-								<a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-								<a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-								<a-sky color="#ECECEC"></a-sky>
-							  </a-scene>
-							</body>
-						  </html></code></pre>
-					</section>
-				</section>
-			</div>
-		</div>
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? "css/print/pdf.css"
+        : "css/print/paper.css";
+      document.getElementsByTagName("head")[0].appendChild(link);
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <section><h1>Pac-man VR in Vue</h1></section>
+          <section>
+            <h2>Elke Heymans</h2>
+            <img src="assets/elke-heymans.jpg" alt="" class="stretch" />
+            <ul>
+              <li>6 years of development experience</li>
+              <li>VueJS developer</li>
+              <li>Photography</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <p>Pac-man</p>
+            <img src="assets/pacman-arcade.png" class="stretch" />
+          </section>
+          <section>
+            <img
+              src="assets/toru-iwatani.jpg"
+              style="float: right"
+              width="30%"
+            />
+            <ul style="width: 60%; float: left">
+              <li>Toru Iwatani</li>
+              <li class="fragment">1980</li>
+              <!-- referencing the mouth movement of opening and closing in succession -->
+              <li class="fragment">
+                Originally named Pakkuman, based on "paku paku taberu"
+              </li>
+              <li class="fragment">Multiple versions</li>
+              <li class="fragment">
+                Highest-grossing and best-selling game series of all time: +$14
+                billion
+              </li>
+            </ul>
+          </section>
+          <section>
+            <p>Pac-man and women</p>
+            <ul style="width: 50%; float: left;">
+              <li class="fragment">Arcade games targeted for men</li>
+              <li class="fragment">Non-violent, cheerful video game</li>
+              <li class="fragment">
+                Based on what women like to do in their time...
+              </li>
+            </ul>
+            <img
+              class="fragment"
+              src="assets/ijustine-pacman-cake.jpg"
+              style="float: right"
+              width="40%"
+            />
+            <!-- watani felt that arcade games only appealed to men for their crude graphics and violence,[16] and that arcades in general were seen as seedy environments.[18] For his next project, Iwatani chose to create a non-violent, cheerful video game that appealed mostly to women,[19] as he believed that attracting women and couples into arcades would potentially make them appear to be much-more family friendly in tone.[16] Iwatani began thinking of things that women liked to do in their time; he decided to center his game around eating, basing this off of women liking to eat desserts and other sweets.[20] His game was initially called Pakkuman, based on the Japanese onomatopoeia term “paku paku taberu”,[21] referencing the mouth movement of opening and closing in succession.[22] -->
+          </section>
+          <!-- https://www.geek.com/games/original-pac-man-created-to-attract-women-to-arcades-because-women-like-to-eat-1643664/ -->
+          <section>
+            <p>Electronic Game Magazine in 1982:</p>
+            <img src="assets/women-arcades-promo.jpg" class="stretch" />
+          </section>
+          <section>
+            <div style="width: 49%; float: left;">
+              <img src="assets/space-invaders-poster.jpg" class="stretch" />
+            </div>
+            <div style="width: 49%; float: left;">
+              <img src="assets/berzerk-poster.jpg" class="stretch" />
+            </div>
+          </section>
+          <section>
+            <img src="assets/original-pacman.jpg" class="stretch" />
+          </section>
+          <!-- https://www.youtube.com/watch?v=avOOt3Z8bhs -->
+          <section>
+            <video
+              data-autoplay
+              src="assets/vr-pacman-1996.mp4"
+              class="stretch"
+            ></video>
+          </section>
+          <!-- https://www.vrs.org.uk/dr-jonathan-walden-virtuality-new-reality-promise-two-decades-soon/ -->
+          <section>
+            <ul>
+              <li>Arcade game</li>
+              <li>Made by Virtuality in 1996</li>
+              <li>Visette virtual reality visor (276x372 resolution / eye)</li>
+              <li>Moveable joystick</li>
+              <li>Tracking was done with magnets</li>
+              <li>Stand-up and sit-down versions</li>
+            </ul>
+          </section>
+          <section>
+            <img src="assets/virtuality-standup-unit.jpeg" class="stretch" />
+          </section>
+          <section>
+            <img src="assets/virtuality-sitdown-unit.jpeg" class="stretch" />
+          </section>
+        </section>
+        <section>
+          <section>VR today</section>
+          <section>
+            <img src="assets/htc-vive-closeup.jpeg" class="stretch" />
+          </section>
+          <section><img src="assets/htc-vive.jpeg" class="stretch" /></section>
+          <section>
+            <img src="assets/vr-connected-to-computer.jpeg" class="stretch" />
+          </section>
+          <section>
+            <div style="width: 49%; float: left;">
+              <img src="assets/hp-vr-backpack.jpeg" />
+            </div>
+            <div style="width: 49%; float: right;">
+              <img src="assets/hp-vr-backpack-used.jpeg" />
+            </div>
+          </section>
+          <section>
+            <p>Google wanted it cheaper!</p>
+            <img src="assets/google-cardboard.jpg" class="stretch" />
+          </section>
+          <!-- https://medium.com/samsung-internet-dev/eleven-examples-of-how-webvr-is-being-used-today-cbcb214b816c -->
+        </section>
+        <section>
+          <section>VR on the web</section>
+          <section>
+            <p>WebVR</p>
+            <ul>
+              <li class="fragment">Mozilla</li>
+              <li class="fragment">Spring of 2014</li>
+              <li class="fragment">
+                Goals:
+                <ul>
+                  <li>Detect VR devices</li>
+                  <li>Query capabilities</li>
+                  <li>Poll position and orientation</li>
+                  <li>Render with appropriate framerate</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <p>WebVR becomes WebXR</p>
+            <ul>
+              <li>Addition of AR</li>
+              <li>Proper emulator extensions</li>
+            </ul>
+            <p>https://blog.mozvr.com/webxr-emulator-extension/</p>
+          </section>
+          <section>
+            <img src="assets/webxr-emulator.gif" alt="" class="stretch" />
+          </section>
+          <section>
+            <p>Great! But what about code...?</p>
+          </section>
+          <section>
+            <p>A 360 degree image</p>
+            <pre><code>&lt;!doctype html&gt;
+&lt;!--
+Copyright 2016 The Chromium Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+--&gt;
+&lt;html&gt;
+  &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, user-scalable=no&quot;&gt;
+  &lt;meta name=&quot;mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;
+  &lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;
 
-		<script src="js/reveal.js"></script>
+  &lt;!-- Origin Trial Token, feature = WebVR (For Chrome M62+), origin = https://webvr.info, expires = 2018-09-10 --&gt;
+&lt;meta http-equiv=&quot;origin-trial&quot; data-feature=&quot;WebVR (For Chrome M62+)&quot; data-expires=&quot;2018-09-10&quot; content=&quot;AhQcOrbjvS0+50wwuqtAidzraKNfZj8Bj159g2+2LsT5QRHe9IeebCl5ApORwd3oGxfKzl5H8s5K3aTMNzC+5gsAAABPeyJvcmlnaW4iOiJodHRwczovL3dlYnZyLmluZm86NDQzIiwiZmVhdHVyZSI6IldlYlZSMS4xTTYyIiwiZXhwaXJ5IjoxNTM2NjAxNDEzfQ==&quot;&gt;
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				hash: true,
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/highlight/highlight.js' },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
-		</script>
-	</body>
+
+  &lt;title&gt;XX - 360 Panorama&lt;/title&gt;
+
+  &lt;!--
+    This sample demonstrates how to render a 360 degree panoramic image in VR.
+  --&gt;
+
+  &lt;style&gt;
+    #webgl-canvas {
+    box-sizing: border-box;
+    height: 100%;
+    left: 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    }
+  &lt;/style&gt;
+
+  &lt;!-- This entire block in only to facilitate dynamically enabling and
+  disabling the WebVR polyfill, and is not necessary for most WebVR apps.
+  If you want to use the polyfill in your app, just include the js file and
+  everything will work the way you want it to by default. --&gt;
+  &lt;script src=&quot;js/third-party/webvr-polyfill.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;js/third-party/wglu/wglu-url.js&quot;&gt;&lt;/script&gt;
+  &lt;script&gt;
+    // Dynamically turn the polyfill on if requested by the query args.
+    if (WGLUUrl.getBool('polyfill', false)) {
+    var polyfill = new WebVRPolyfill({
+      // Ensures the polyfill is always active on mobile, due to providing
+      // a polyfilled CardboardVRDisplay when no native API is available,
+      // and also polyfilling even when the native API is available, due to
+      // providing a CardboardVRDisplay when no native VRDisplays exist.
+      PROVIDE_MOBILE_VRDISPLAY: true,
+      // Polyfill optimizations
+      DIRTY_SUBMIT_FRAME_BINDINGS: true,
+      BUFFER_SCALE: 0.75,
+    });
+    }
+  &lt;/script&gt;
+  &lt;!-- End sample polyfill enabling logic --&gt;
+
+  &lt;script src=&quot;js/third-party/gl-matrix-min.js&quot;&gt;&lt;/script&gt;
+
+  &lt;script src=&quot;js/third-party/wglu/wglu-program.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;js/third-party/wglu/wglu-stats.js&quot;&gt;&lt;/script&gt;
+
+  &lt;script src=&quot;js/vr-panorama.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;js/vr-samples-util.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;canvas id=&quot;webgl-canvas&quot;&gt;&lt;/canvas&gt;
+  &lt;script&gt;
+    /* global mat4, vec3, VRPanorama, WGLUStats, VRSamplesUtil */
+    (function () {
+    &quot;use strict&quot;;
+
+    var vrDisplay = null;
+    var frameData = null;
+    var projectionMat = mat4.create();
+    var poseMat = mat4.create();
+    var viewMat = mat4.create();
+    var vrPresentButton = null;
+
+    // ================================================================
+    // WebGL and WebAudio scene setup. This code is not WebVR specific.
+    // ================================================================
+
+    // WebGL setup.
+    var gl = null;
+    var panorama = null;
+    var stats = null;
+
+    function onContextLost( event ) {
+    event.preventDefault();
+    console.log( 'WebGL Context Lost.' );
+    gl = null;
+    panorama = null;
+    stats = null;
+    }
+
+    function onContextRestored( event ) {
+    console.log( 'WebGL Context Restored.' );
+    init(vrDisplay ? vrDisplay.capabilities.hasExternalDisplay : false);
+    }
+
+    var webglCanvas = document.getElementById(&quot;webgl-canvas&quot;);
+    webglCanvas.addEventListener( 'webglcontextlost', onContextLost, false );
+    webglCanvas.addEventListener( 'webglcontextrestored', onContextRestored, false );
+
+    function init (preserveDrawingBuffer) {
+    var glAttribs = {
+      alpha: false,
+      antialias: false,
+      preserveDrawingBuffer: preserveDrawingBuffer
+    };
+    gl = webglCanvas.getContext(&quot;webgl&quot;, glAttribs);
+    if (!gl) {
+      gl = webglCanvas.getContext(&quot;experimental-webgl&quot;, glAttribs);
+      if (!gl) {
+      VRSamplesUtil.addError(&quot;Your browser does not support WebGL.&quot;);
+      return;
+      }
+    }
+    gl.enable(gl.DEPTH_TEST);
+    gl.enable(gl.CULL_FACE);
+
+    panorama = new VRPanorama(gl);
+    panorama.setImage(&quot;media/textures/pano_4k.jpg&quot;);
+
+    var enablePerformanceMonitoring = WGLUUrl.getBool(
+      'enablePerformanceMonitoring', false);
+    stats = new WGLUStats(gl, enablePerformanceMonitoring);
+
+    // Wait until we have a WebGL context to resize and start rendering.
+    window.addEventListener(&quot;resize&quot;, onResize, false);
+    onResize();
+    window.requestAnimationFrame(onAnimationFrame);
+    }
+
+    // ================================
+    // WebVR-specific code begins here.
+    // ================================
+
+    function onVRRequestPresent () {
+    vrDisplay.requestPresent([{ source: webglCanvas }]).then(function () {
+    }, function (err) {
+      var errMsg = &quot;requestPresent failed.&quot;;
+      if (err &amp;&amp; err.message) {
+      errMsg += &quot;&lt;br/&gt;&quot; + err.message
+      }
+      VRSamplesUtil.addError(errMsg, 2000);
+    });
+    }
+
+    function onVRExitPresent () {
+    if (!vrDisplay.isPresenting)
+      return;
+
+    vrDisplay.exitPresent().then(function () {
+    }, function () {
+      VRSamplesUtil.addError(&quot;exitPresent failed.&quot;, 2000);
+    });
+    }
+
+    function onVRPresentChange () {
+    onResize();
+
+    if (vrDisplay.isPresenting) {
+      if (vrDisplay.capabilities.hasExternalDisplay) {
+      VRSamplesUtil.removeButton(vrPresentButton);
+      vrPresentButton = VRSamplesUtil.addButton(&quot;Exit VR&quot;, &quot;E&quot;, &quot;media/icons/cardboard64.png&quot;, onVRExitPresent);
+      }
+    } else {
+      if (vrDisplay.capabilities.hasExternalDisplay) {
+      VRSamplesUtil.removeButton(vrPresentButton);
+      vrPresentButton = VRSamplesUtil.addButton(&quot;Enter VR&quot;, &quot;E&quot;, &quot;media/icons/cardboard64.png&quot;, onVRRequestPresent);
+      }
+    }
+    }
+
+    if (navigator.getVRDisplays) {
+    frameData = new VRFrameData();
+
+    navigator.getVRDisplays().then(function (displays) {
+      if (displays.length &gt; 0) {
+      vrDisplay = displays[displays.length - 1];
+      vrDisplay.depthNear = 0.1;
+      vrDisplay.depthFar = 1024.0;
+
+      init(true);
+
+      if (vrDisplay.capabilities.canPresent)
+        vrPresentButton = VRSamplesUtil.addButton(&quot;Enter VR&quot;, &quot;E&quot;, &quot;media/icons/cardboard64.png&quot;, onVRRequestPresent);
+
+      // For the benefit of automated testing. Safe to ignore.
+      if (vrDisplay.capabilities.canPresent &amp;&amp; WGLUUrl.getBool('canvasClickPresents', false))
+        webglCanvas.addEventListener(&quot;click&quot;, onVRRequestPresent, false);
+
+      window.addEventListener('vrdisplaypresentchange', onVRPresentChange, false);
+      window.addEventListener('vrdisplayactivate', onVRRequestPresent, false);
+      window.addEventListener('vrdisplaydeactivate', onVRExitPresent, false);
+      } else {
+      init(false);
+      VRSamplesUtil.addInfo(&quot;WebVR supported, but no VRDisplays found.&quot;, 3000);
+      }
+    }, function () {
+      VRSamplesUtil.addError(&quot;Your browser does not support WebVR. See &lt;a href='http://webvr.info'&gt;webvr.info&lt;/a&gt; for assistance.&quot;);
+    });
+    } else if (navigator.getVRDevices) {
+    init(false);
+    VRSamplesUtil.addError(&quot;Your browser supports WebVR but not the latest version. See &lt;a href='http://webvr.info'&gt;webvr.info&lt;/a&gt; for more info.&quot;);
+    } else {
+    init(false);
+    VRSamplesUtil.addError(&quot;Your browser does not support WebVR. See &lt;a href='http://webvr.info'&gt;webvr.info&lt;/a&gt; for assistance.&quot;);
+    }
+
+    function onResize () {
+    if (vrDisplay &amp;&amp; vrDisplay.isPresenting) {
+      var leftEye = vrDisplay.getEyeParameters(&quot;left&quot;);
+      var rightEye = vrDisplay.getEyeParameters(&quot;right&quot;);
+
+      webglCanvas.width = Math.max(leftEye.renderWidth, rightEye.renderWidth) * 2;
+      webglCanvas.height = Math.max(leftEye.renderHeight, rightEye.renderHeight);
+    } else {
+      webglCanvas.width = webglCanvas.offsetWidth * window.devicePixelRatio;
+      webglCanvas.height = webglCanvas.offsetHeight * window.devicePixelRatio;
+    }
+    }
+
+    function getPoseMatrix (out, pose) {
+    // When rendering a panorama ignore the pose position. You want the
+    // users head to stay centered at all times. This would be terrible
+    // advice for any other type of VR scene, by the way!
+    var orientation = pose.orientation;
+    if (!orientation) { orientation = [0, 0, 0, 1]; }
+    mat4.fromQuat(out, orientation);
+    mat4.invert(out, out);
+    }
+
+    function onAnimationFrame (t) {
+    // do not attempt to render if there is no available WebGL context
+    if (!gl || !stats || !panorama) {
+      return;
+    }
+    stats.begin();
+
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+    if (vrDisplay) {
+      vrDisplay.requestAnimationFrame(onAnimationFrame);
+
+      vrDisplay.getFrameData(frameData);
+
+      // FYI: When rendering a panorama do NOT use view matricies directly!
+      // That will make the viewer feel like their head is trapped in a tiny
+      // ball, which is usually not the desired effect. Instead, render both
+      // eyes from a single viewpoint.
+      getPoseMatrix(viewMat, frameData.pose);
+
+      if (vrDisplay.isPresenting) {
+      gl.viewport(0, 0, webglCanvas.width * 0.5, webglCanvas.height);
+      panorama.render(frameData.leftProjectionMatrix, viewMat);
+
+      gl.viewport(webglCanvas.width * 0.5, 0, webglCanvas.width * 0.5, webglCanvas.height);
+      panorama.render(frameData.rightProjectionMatrix, viewMat);
+
+      vrDisplay.submitFrame();
+      } else {
+      gl.viewport(0, 0, webglCanvas.width, webglCanvas.height);
+      mat4.perspective(projectionMat, Math.PI*0.4, webglCanvas.width / webglCanvas.height, 0.1, 1024.0);
+      panorama.render(projectionMat, viewMat);
+      stats.renderOrtho();
+      }
+    } else {
+      window.requestAnimationFrame(onAnimationFrame);
+
+      // No VRDisplay found.
+      gl.viewport(0, 0, webglCanvas.width, webglCanvas.height);
+      mat4.perspective(projectionMat, Math.PI*0.4, webglCanvas.width / webglCanvas.height, 0.1, 1024.0);
+      mat4.identity(viewMat);
+      panorama.render(projectionMat, viewMat);
+
+      stats.renderOrtho();
+    }
+
+    stats.end();
+    }
+    })();
+  &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </section>
+        </section>
+        <section>
+          <section>
+            <p>The technology we'll use</p>
+            <img src="assets/aframe.png" alt="" class="stretch" />
+          </section>
+          <section>
+            <p>A 360 degree panorama photo in Aframe</p>
+            <pre class="fragement"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;360&amp;deg; Image&lt;/title&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;360&amp;deg; Image - A-Frame&quot;&gt;
+  &lt;script src=&quot;../../../dist/aframe-master.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;a-scene&gt;
+    &lt;a-sky src=&quot;puydesancy.jpg&quot; rotation=&quot;0 -130 0&quot;&gt;&lt;/a-sky&gt;
+    &lt;a-text font=&quot;kelsonsans&quot; value=&quot;Puy de Sancy, France&quot;
+      width=&quot;6&quot; position=&quot;-2.5 0.25 -1.5&quot;
+      rotation=&quot;0 15 0&quot;&gt;&lt;/a-text&gt;
+  &lt;/a-scene&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </section>
+          <section>
+            <a-scene>
+              <a-sky src="assets/puydesancy.jpg" rotation="0 -130 0"></a-sky>
+              <a-text
+                font="kelsonsans"
+                value="Puy de Sancy, France"
+                width="6"
+                position="-2.5 0.25 -1.5"
+                rotation="0 15 0"
+              ></a-text>
+            </a-scene>
+          </section>
+          <section>
+            <p>Features</p>
+            <ul>
+              <li>HTML</li>
+              <li>
+                Declarative, extensible and composable structure to three.js
+              </li>
+              <li>Supports most VR headsets</li>
+              <li>Visual inspector</li>
+            </ul>
+            <img src="assets/aframe-inspector.gif" alt="" class="stretch" />
+          </section>
+          <section>
+            <p>Building a scene: the result</p>
+            <img src="assets/aframe-ascene.png" alt="" class="stretch" />
+          </section>
+          <section>
+            <p>Building a scene: the setup</p>
+            <pre><code class="xml" data-trim tab-size="2">
+&lt;!DOCTYPE html&gt;
+&lt;head&gt;
+  &lt;script src=&quot;https://aframe.io/releases/1.0.3/aframe.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;a-scene&gt;
+    &lt;a-box position=&quot;-1 0.5 -3&quot; rotation=&quot;0 45 0&quot; color=&quot;#4CC3D9&quot;&gt;&lt;/a-box&gt;
+    &lt;a-sphere position=&quot;0 1.25 -5&quot; radius=&quot;1.25&quot; color=&quot;#EF2D5E&quot;&gt;&lt;/a-sphere&gt;
+    &lt;a-cylinder position=&quot;1 0.75 -3&quot; radius=&quot;0.5&quot; height=&quot;1.5&quot; color=&quot;#FFC65D&quot;&gt;&lt;/a-cylinder&gt;
+    &lt;a-plane position=&quot;0 0 -4&quot; rotation=&quot;-90 0 0&quot; width=&quot;4&quot; height=&quot;4&quot; color=&quot;#7BC8A4&quot;&gt;&lt;/a-plane&gt;
+    &lt;a-sky color=&quot;#ECECEC&quot;&gt;&lt;/a-sky&gt;
+  &lt;/a-scene&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </section>
+        </section>
+        <section>
+          <section>Defining the game concept</section>
+          <section>
+            <p>Game features</p>
+            <ul>
+              <li>Maze</li>
+              <li>Move within the maze</li>
+              <li>Add 1 ghost</li>
+              <li>Collecting dots</li>
+            </ul>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js">
+      window.document.onload = function(e) {
+        document.querySelectorAll("code").forEach(function(element) {
+          element.innerHTML = element.innerHTML.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        });
+      }
+    </script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        hash: true,
+        dependencies: [
+          { src: "plugin/markdown/marked.js" },
+          { src: "plugin/markdown/markdown.js" },
+          { src: "plugin/highlight/highlight.js" },
+          { src: "plugin/notes/notes.js", async: true }
+        ]
+      });
+    </script>
+    <script src="assets/aframe.js"></script>
+  </body>
 </html>
