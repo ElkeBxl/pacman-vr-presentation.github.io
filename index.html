@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Pacman VR in Vue</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>Pacman VR in Vue</section>
+				<section>
+					<section>Pacman</section>
+					<section>
+						<img src="assets/toru-iwatani.jpg" style="float: right" width="30%" />
+						<ul style="width: 60%; float: left">
+							<li class="fragment">1980</li class="fragment">
+							<li class="fragment">Toru Iwatani</li>
+							<!-- referencing the mouth movement of opening and closing in succession -->
+							<li class="fragment">Originally named Pakkuman, based on "paku paku taberu"</li>
+							<li class="fragment">Multiple versions</li>
+							<li class="fragment">Highest-grossing and best-selling game series of all time: +$14 billion</li>
+						</ul>
+					</section>
+					<section>
+						<p>Pac-man and women</p>
+						<ul style="width: 50%; float: left;">
+							<li class="fragment">Arcade games targeted for men</li>
+							<li class="fragment">Non-violent, cheerful video game</li>
+							<li class="fragment">Based on what women like to do in their time...</li>
+						</ul>
+						<img class="fragment" src="assets/ijustine-pacman-cake.jpg" style="float: right" width="40%" />
+						<!-- watani felt that arcade games only appealed to men for their crude graphics and violence,[16] and that arcades in general were seen as seedy environments.[18] For his next project, Iwatani chose to create a non-violent, cheerful video game that appealed mostly to women,[19] as he believed that attracting women and couples into arcades would potentially make them appear to be much-more family friendly in tone.[16] Iwatani began thinking of things that women liked to do in their time; he decided to center his game around eating, basing this off of women liking to eat desserts and other sweets.[20] His game was initially called Pakkuman, based on the Japanese onomatopoeia term “paku paku taberu”,[21] referencing the mouth movement of opening and closing in succession.[22] -->
+					</section>
+					<!-- https://www.geek.com/games/original-pac-man-created-to-attract-women-to-arcades-because-women-like-to-eat-1643664/ -->
+					<section>
+						<p>Electronic Game Magazin in 1982:</p>
+						<img src="assets/women-arcades-promo.jpg" class="stretch" />
+					</section>
+					<section>
+						<div style="width: 49%; float: left;"><img src="assets/space-invaders-poster.jpg" class="stretch" /></div>
+						<div style="width: 49%; float: left;"><img src="assets/berzerk-poster.jpg" class="stretch" /></div>
+					</section>
+					<section><img src="assets/original-pacman.jpg" class="stretch" /></section>
+					<!-- https://www.youtube.com/watch?v=avOOt3Z8bhs -->
+					<section>
+						<video data-autoplay src="assets/vr-pacman-1996.mp4" class="stretch"></video>
+					</section>
+					<!-- https://www.vrs.org.uk/dr-jonathan-walden-virtuality-new-reality-promise-two-decades-soon/ -->
+					<section>
+						<ul>
+							<li>Arcade game</li>
+							<li>Made by Virtuality in 1996</li>
+							<li>Visette virtual reality visor (276x372 resolution / eye)</li>
+							<li>Moveable joystick</li>
+							<li>Tracking was done with magnets</li>
+							<li>Stand-up and sit-down versions</li>
+						</ul>
+					</section>
+					<section><img src="assets/virtuality-standup-unit.jpeg" class="stretch" /></section>
+					<section><img src="assets/virtuality-sitdown-unit.jpeg" class="stretch" /></section>
+				</section>
+				<section>
+					<section>VR today</section>
+					<section><img src="assets/htc-vive-closeup.jpeg" class="stretch" /></section>
+					<section><img src="assets/htc-vive.jpeg" class="stretch" /></section>
+					<section><img src="assets/vr-connected-to-computer.jpeg" class="stretch" /></section>
+					<section>
+						<p>Google wanted it cheaper!</p>
+						<img src="assets/google-cardboard.jpg" class="stretch" />
+					</section>
+					<!-- https://medium.com/samsung-internet-dev/eleven-examples-of-how-webvr-is-being-used-today-cbcb214b816c -->
+				</section>
+				<section>
+					<section>VR on the web</section>
+					<section>
+						<p>WebVR</p>
+						<ul>
+							<li class="fragment">Mozilla</li>
+							<li class="fragment">Spring of 2014</li>
+							<li class="fragment">
+								Goals:
+								<ul>
+									<li>Detect VR devices</li>
+									<li>Query capabilities</li>
+									<li>Poll position and orientation</li>
+									<li>Render with appropriate framerate</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<p>WebVR becomes WebXR</p>
+						<ul>
+							<li>Addition of AR</li>
+							<li>Proper emulator extensions</li>
+						</ul>
+						<p>https://blog.mozvr.com/webxr-emulator-extension/</p>
+					</section>
+					<section><img src="assets/webxr-emulator.gif" alt="" class="stretch"></section>
+				</section>
+				<section>
+					<section>Defining the game concept</section>
+					<section>
+						<p>Game features</p>
+						<ul>
+							<li>Maze</li>
+							<li>Move within the maze</li>
+							<li>Add 1 ghost</li>
+							<li>Collecting dots</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<p>The technology we'll use</p>
+						<img src="assets/aframe.png" alt="" class="stretch" />
+					</section>
+					<section>
+						<p>Features</p>
+						<ul>
+							<li>HTML</li>
+							<li>Declarative, extensible and composable structure to three.js</li>
+							<li>Supports most VR headsets</li>
+							<li>Visual inspector</li>
+						</ul>
+						<img src="assets/aframe-inspector.gif" alt="" class="stretch">
+					</section>
+					<section>
+						<p>Building a scene</p>
+						<img src="assets/aframe-ascene.png" alt="" class="stretch" />
+					</section>
+					<section>
+						<pre><code data-trim data-noescape><html>
+							<head>
+							  <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+							</head>
+							<body>
+							  <a-scene>
+								<a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+								<a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+								<a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+								<a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+								<a-sky color="#ECECEC"></a-sky>
+							  </a-scene>
+							</body>
+						  </html></code></pre>
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				hash: true,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/highlight/highlight.js' },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
