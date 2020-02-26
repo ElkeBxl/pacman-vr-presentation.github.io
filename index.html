@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/reveal.css" />
-    <link rel="stylesheet" href="css/theme/black.css" />
+    <link rel="stylesheet" href="css/theme/elke.css" />
 
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="lib/css/monokai.css" />
@@ -31,7 +31,11 @@
     <div class="reveal">
       <div class="slides">
         <section>
-          <section><h1>Pac-man VR in Vue</h1></section>
+          <section>
+            <h1>Pac-man VR in Vue</h1>
+            <img src="assets/pacman.png" class="stretch" alt="" />
+          </section>
+
           <section>
             <h2>Elke Heymans</h2>
             <img src="assets/elke-heymans.jpg" alt="" class="stretch" />
@@ -39,6 +43,7 @@
               <li>6 years of development experience</li>
               <li>VueJS developer</li>
               <li>Photography</li>
+              <li>@ElkeBxl</li>
             </ul>
           </section>
         </section>
@@ -48,6 +53,7 @@
             <img src="assets/pacman-arcade.png" class="stretch" />
           </section>
           <section>
+            <h3>Some info</h3>
             <img
               src="assets/toru-iwatani.jpg"
               style="float: right"
@@ -111,7 +117,7 @@
           </section>
           <!-- https://www.vrs.org.uk/dr-jonathan-walden-virtuality-new-reality-promise-two-decades-soon/ -->
           <section>
-            <h2>VR Pacman (1996)</h2>
+            <h2>Pac-man VR (1996)</h2>
             <ul>
               <li>Arcade game</li>
               <li>Made by Virtuality in 1996</li>
@@ -601,6 +607,7 @@ found in the LICENSE file.
             <h3>The maze</h3>
             <ul>
               <li>Height of the walls?</li>
+              <li>Transparency?</li>
               <li>Use of colours?</li>
               <li>Themeing?</li>
             </ul>
@@ -661,22 +668,77 @@ found in the LICENSE file.
             <h3>Rendering the maze</h3>
             <ul>
               <li class="fragment">1 wall = 1 <em>a-plane</em>?</li>
-              <li class="fragment">Usage of <em>a-box</em> for the walls</li>
+              <li class="fragment">Usage of <em>a-box</em> for the walls with a texture</li>
               <li class="fragment">More advanced: render it in Blender</li>
             </ul>
-          </section>
+		  </section>
+		  <section>
+			  <h3>The rendered maze</h3>
+			  <img src="assets/maze-rendered.png" alt="" class="stretch">
+		  </section>
           <section>
             <h3>Restriction of movement</h3>
             <ul>
               <li class="fragment"><em>y-axis</em> fixed to 0</li>
               <li class="fragment">
-                Collision detection
+                Collision detection with walls
                 <ul>
                   <li><em>aframe-physics-system</em></li>
                   <li>Own implementation</li>
                 </ul>
               </li>
             </ul>
+          </section>
+          <section>
+            <h3>Being captured by a ghost</h3>
+            <ul>
+              <li>Basic collision detection</li>
+              <li>Threshold calibration</li>
+            </ul>
+            <pre><code data-trim class="lang-js">
+if (
+  Math.abs(this.ghost.position.x - this.position.x)
+    <= this.collisionThreshold &&
+  Math.abs(this.ghost.position.y - this.position.y)
+    <= this.collisionThreshold
+) {
+ // logic to lose a life or end the game
+}
+			  </code></pre>
+            <img
+              src="assets/collision-threshold-too-high.png"
+              class="stretch"
+              alt=""
+            />
+          </section>
+        </section>
+        <section>
+          <section><h2>Demo time</h2></section>
+          <section>
+            <h3>Your turn!</h3>
+            <a href="http://pacman-vr.netlify.com"
+              >http://pacman-vr.netlify.com</a
+            >
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>What have we learned?</h2>
+          </section>
+          <section>
+            <h3>Basic setup is easy</h3>
+            <ul>
+              <li>Aframe does it all for you</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Rendering correctly can be tricky</h3>
+            <ul>
+              <li>Be careful with the coordinate system</li>
+              <li>Aframe does not like adding/deleting components</li>
+              <li>Creative solutions to hide components can be funny</li>
+            </ul>
+            <img src="assets/dots-rendering-oops.png" class="fragment" alt="" />
           </section>
         </section>
       </div>
@@ -688,6 +750,8 @@ found in the LICENSE file.
       // - https://github.com/hakimel/reveal.js#dependencies
       Reveal.initialize({
         hash: true,
+        transition: "convex",
+        transitionSpeed: "fast",
         dependencies: [
           { src: "plugin/markdown/marked.js" },
           { src: "plugin/markdown/markdown.js" },
