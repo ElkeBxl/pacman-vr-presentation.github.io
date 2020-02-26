@@ -26,6 +26,7 @@
         : "css/print/paper.css";
       document.getElementsByTagName("head")[0].appendChild(link);
     </script>
+    <script src="assets/aframe.js"></script>
   </head>
   <body>
     <div class="reveal">
@@ -33,24 +34,32 @@
         <section>
           <section>
             <h1>Pac-man VR in Vue</h1>
-            <img src="assets/pacman.png" class="stretch" alt="" />
+            <div style="width: 45%; float: left">
+              <img src="assets/pacman.png" alt="" />
+            </div>
+            <div style="width: 45%; float: right">
+              <img src="assets/vue.png" alt="" />
+            </div>
           </section>
-
           <section>
             <h2>Elke Heymans</h2>
-            <img src="assets/elke-heymans.jpg" alt="" class="stretch" />
             <ul>
               <li>6 years of development experience</li>
               <li>VueJS developer</li>
               <li>Photography</li>
-              <li>@ElkeBxl</li>
+              <li><a href="http://twitter.com/ElkeBxl">@ElkeBxl</a></li>
             </ul>
+            <img src="assets/elke-heymans.jpg" alt="" class="stretch" />
           </section>
         </section>
         <section>
           <section>
             <h2>Pac-man</h2>
             <img src="assets/pacman-arcade.png" class="stretch" />
+          </section>
+          <section>
+            <h3>The original game</h3>
+            <img src="assets/original-pacman.jpg" class="stretch" />
           </section>
           <section>
             <h3>Some info</h3>
@@ -103,14 +112,12 @@
               <img src="assets/berzerk-poster.jpg" class="stretch" />
             </div>
           </section>
-          <section>
-            <img src="assets/original-pacman.jpg" class="stretch" />
-            <p>The original game</p>
-          </section>
           <!-- https://www.youtube.com/watch?v=avOOt3Z8bhs -->
           <section>
             <video
               data-autoplay
+              controls
+              muted
               src="assets/vr-pacman-1996.mp4"
               class="stretch"
             ></video>
@@ -155,6 +162,14 @@
             <h3>Google wanted it cheaper!</h3>
             <img src="assets/google-cardboard.jpg" class="stretch" />
           </section>
+          <section>
+            <div style="width: 45%; float: left">
+              <img src="assets/cardboard-in-use.jpg" alt="" />
+            </div>
+            <div style="width: 45%; float: right">
+              <img src="assets/cardboard-in-use-zoomed.jpeg" alt="" />
+            </div>
+          </section>
           <!-- https://medium.com/samsung-internet-dev/eleven-examples-of-how-webvr-is-being-used-today-cbcb214b816c -->
         </section>
         <section>
@@ -165,7 +180,7 @@
           <section>
             <h3>WebVR</h3>
             <ul>
-              <li class="fragment">Mozilla</li>
+              <li>Mozilla</li>
               <li class="fragment">Spring of 2014</li>
               <li class="fragment">
                 Goals:
@@ -177,6 +192,7 @@
                 </ul>
               </li>
             </ul>
+            <p class="fragment"><em>Experimental technology...</em></p>
           </section>
           <section>
             <h3>Your phone as the hardware</h3>
@@ -201,9 +217,19 @@
             <h3>WebVR becomes WebXR</h3>
             <ul>
               <li>Addition of AR</li>
-              <li>Proper emulator extensions</li>
+              <li class="fragment">Working draft to become a web standard</li>
+              <li class="fragment">Proper emulator extensions</li>
             </ul>
-            <p>https://blog.mozvr.com/webxr-emulator-extension/</p>
+            <p class="fragment">
+              <a href="https://www.w3.org/TR/webxr/"
+                >https://www.w3.org/TR/webxr/</a
+              >
+            </p>
+            <p class="fragment">
+              <a href="https://blog.mozvr.com/webxr-emulator-extension/"
+                >https://blog.mozvr.com/webxr-emulator-extension/</a
+              >
+            </p>
           </section>
           <section>
             <img src="assets/webxr-emulator.gif" alt="" class="stretch" />
@@ -516,8 +542,20 @@ found in the LICENSE file.
             <img src="assets/aframe.png" alt="" class="stretch" />
           </section>
           <section>
-            <h3>A 360 degree panorama photo in Aframe</h3>
-            <pre><code  data-trim class="line-numbers" data-highlight-lines="7,10,11,12">&lt;!DOCTYPE html&gt;
+            <h3>Features</h3>
+            <ul>
+              <li>HTML</li>
+              <li>
+                Declarative, extensible and composable structure to three.js
+              </li>
+              <li>Supports most VR headsets</li>
+              <li>Visual inspector</li>
+            </ul>
+            <img src="assets/aframe-inspector.gif" alt="" class="stretch" />
+          </section>
+          <section>
+            <h3>A 360 degree panorama photo in A-frame</h3>
+            <pre><code data-trim class="line-numbers" data-highlight-lines="7,10,11,12">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -556,24 +594,12 @@ found in the LICENSE file.
             </a-scene>
           </section>
           <section>
-            <h3>Features</h3>
-            <ul>
-              <li>HTML</li>
-              <li>
-                Declarative, extensible and composable structure to three.js
-              </li>
-              <li>Supports most VR headsets</li>
-              <li>Visual inspector</li>
-            </ul>
-            <img src="assets/aframe-inspector.gif" alt="" class="stretch" />
-          </section>
-          <section>
             <h3>Building a scene: the result</h3>
             <img src="assets/aframe-ascene.png" alt="" class="stretch" />
           </section>
           <section>
             <h3>Building a scene: the setup</h3>
-            <pre><code class="xml" data-trim tab-size="2">
+            <pre><code data-trim class="line-numbers" data-highlight-lines="6-12">
 &lt;!DOCTYPE html&gt;
 &lt;head&gt;
   &lt;script src=&quot;https://aframe.io/releases/1.0.3/aframe.min.js&quot;&gt;&lt;/script&gt;
@@ -597,19 +623,19 @@ found in the LICENSE file.
           <section>
             <h3>Game features</h3>
             <ul>
-              <li>Maze</li>
-              <li>Move within the maze</li>
-              <li>Add 1 ghost</li>
-              <li>Collecting dots</li>
+              <li class="fragment">Maze</li>
+              <li class="fragment">Move within the maze</li>
+              <li class="fragment">Add 1 ghost</li>
+              <li class="fragment">Collecting dots</li>
             </ul>
           </section>
           <section>
             <h3>The maze</h3>
             <ul>
-              <li>Height of the walls?</li>
-              <li>Transparency?</li>
-              <li>Use of colours?</li>
-              <li>Themeing?</li>
+              <li class="fragment">Height of the walls?</li>
+              <li class="fragment">Transparency?</li>
+              <li class="fragment">Use of colours?</li>
+              <li class="fragment">Themeing?</li>
             </ul>
           </section>
           <section>
@@ -661,21 +687,36 @@ found in the LICENSE file.
                 Free movement on <em>x-axis</em>, <em>y-axis</em> and
                 <em>z-axis</em>
               </li>
+              <li class="fragment">
+                Add lightsources
+                <ul>
+                  <li>Ambient light</li>
+                  <li>Point light</li>
+                </ul>
+              </li>
             </ul>
+            <pre
+              class="fragment"
+            ><code data-trim class="line-numbers">&lt;a-entity light=&quot;type: ambient; intensity: 0.5;&quot;&gt;&lt;/a-entity&gt;
+&lt;a-entity light=&quot;type: point; castShadow: false; intensity: 1;&quot;
+:position=&quot;cameraPosition&quot;&gt;&lt;/a-entity&gt;</code></pre>
             <img src="assets/right-hand-rule.png" class="fragment" alt="" />
           </section>
           <section>
             <h3>Rendering the maze</h3>
             <ul>
               <li class="fragment">1 wall = 1 <em>a-plane</em>?</li>
-              <li class="fragment">Usage of <em>a-box</em> for the walls with a texture</li>
-              <li class="fragment">More advanced: render it in Blender</li>
+              <li class="fragment">
+                Usage of <em>a-box</em> for the walls with a texture
+              </li>
+              <li class="fragment">More advanced: render it in 3D software</li>
+              <li class="fragment">Support for gltf models</li>
             </ul>
-		  </section>
-		  <section>
-			  <h3>The rendered maze</h3>
-			  <img src="assets/maze-rendered.png" alt="" class="stretch">
-		  </section>
+          </section>
+          <section>
+            <h3>The rendered maze</h3>
+            <img src="assets/maze-rendered.png" alt="" class="stretch" />
+          </section>
           <section>
             <h3>Restriction of movement</h3>
             <ul>
@@ -695,7 +736,7 @@ found in the LICENSE file.
               <li>Basic collision detection</li>
               <li>Threshold calibration</li>
             </ul>
-            <pre><code data-trim class="lang-js">
+            <pre><code data-trim class="line-numbers lang-js">
 if (
   Math.abs(this.ghost.position.x - this.position.x)
     <= this.collisionThreshold &&
@@ -711,6 +752,49 @@ if (
               alt=""
             />
           </section>
+          <section>
+            <h3>Pac-man is hungry</h3>
+            <ul>
+              <li>1 empty space = 1 dot to eat</li>
+              <li class="fragment">Arrive at empty space = eat the dot</li>
+              <li class="fragment">Score++</li>
+            </ul>
+            <img src="assets/dots-rendering-oops.png" class="fragment" alt="" />
+            <!-- <pre><code data-trim class="line-numbers lang-js">
+dots(): Array&lt;Array&lt;boolean&gt;&gt; {
+  return this.maze.map((row, rowIndex) =&gt;
+	this.maze[rowIndex].map((column, columnIndex) =&gt;
+      column !== 0x00)
+  );
+}
+</code></pre> -->
+          </section>
+          <section>
+            <h3>Showing the scores</h3>
+            <ul>
+              <li>Be careful where to put it</li>
+              <li class="fragment">HUD-like</li>
+              <li class="fragment">Linked to the camera</li>
+            </ul>
+            <pre
+              class="fragment"
+            ><code data-trim class="line-numbers lang-xml">&lt;a-entity id=&quot;rig&quot; ...other attributes...&gt;
+  &lt;a-entity id=&quot;camera&quot; camera ...other attributes...&gt;
+    &lt;a-text font=&quot;kelsonsans&quot;
+    :value=&quot;calculatedScore&quot; position=&quot;0 -0.5 -1&quot;
+    width=&quot;2&quot; height=&quot;0.5&quot;&gt;&lt;/a-text&gt;
+  &lt;/a-entity&gt;
+&lt;/a-entity&gt;</code></pre>
+            <pre
+              class="fragment"
+            ><code data-trim class="line-numbers lang-js">calculatedScore(): string {
+  if (this.score < this.totalAmountOfDots) {
+    return `${this.score} / ${this.totalAmountOfDots}`;
+  } else {
+    return "You've won!";
+  }
+}</code></pre>
+          </section>
         </section>
         <section>
           <section><h2>Demo time</h2></section>
@@ -719,6 +803,7 @@ if (
             <a href="http://pacman-vr.netlify.com"
               >http://pacman-vr.netlify.com</a
             >
+            <img src="assets/splitscreen.jpeg" alt="" />
           </section>
         </section>
         <section>
@@ -728,18 +813,59 @@ if (
           <section>
             <h3>Basic setup is easy</h3>
             <ul>
-              <li>Aframe does it all for you</li>
+              <li>A-frame does it all for you</li>
+              <li class="fragment">Setting up a basic scene is easy</li>
+              <li class="fragment">No need for implementing 2 modes</li>
             </ul>
           </section>
           <section>
             <h3>Rendering correctly can be tricky</h3>
             <ul>
               <li>Be careful with the coordinate system</li>
-              <li>Aframe does not like adding/deleting components</li>
-              <li>Creative solutions to hide components can be funny</li>
+              <li class="fragment">
+                A-frame does not like adding/deleting components
+              </li>
+              <li class="fragment">
+                Creative solutions to hide components can be funny
+              </li>
             </ul>
-            <img src="assets/dots-rendering-oops.png" class="fragment" alt="" />
           </section>
+          <section>
+            <h3>Performance can be an issue</h3>
+            <ul>
+              <li>Watch out for the amount of entities</li>
+              <li class="fragment">Updating many entities is slow</li>
+              <li class="fragment">Browsers make a difference</li>
+              <li class="fragment">High-end phone will render better</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Is there a future for WebVR?</h3>
+            <ul>
+              <li class="fragment">With WebXR being standardised: yes</li>
+              <li class="fragment">Frameworks like A-frame will help a lot</li>
+              <li class="fragment">
+                The future is combining the power of VR and AR: XR
+              </li>
+            </ul>
+            <p class="fragment">
+              So who knows.... <span class="fragment">XR Pac-Man?</span>
+            </p>
+          </section>
+        </section>
+        <section>
+          <h2>Game over!</h2>
+          <p><a href="http://twitter.com/ElkeBxl">@ElkeBxl</a></p>
+          <p>
+            <a href="https://github.com/ElkeBxl/pacman-vr"
+              >https://github.com/ElkeBxl/pacman-vr</a
+            >
+          </p>
+          <p>
+            <a href="http://pacman-vr.netlify.com"
+              >http://pacman-vr.netlify.com</a
+            >
+          </p>
         </section>
       </div>
     </div>
@@ -761,6 +887,5 @@ if (
         ]
       });
     </script>
-    <script src="assets/aframe.js"></script>
   </body>
 </html>
