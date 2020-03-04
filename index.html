@@ -84,20 +84,17 @@
           </section>
           <section>
             <h2>Pac-man and women</h2>
-            <ul style="width: 50%; float: left;">
+            <ul>
               <li class="fragment">Arcade games targeted for men</li>
               <li class="fragment">Non-violent, cheerful video game</li>
               <li class="fragment">
                 Based on what women like to do in their time...
               </li>
             </ul>
-            <img
-              class="fragment"
-              src="assets/ijustine-pacman-cake.jpg"
-              style="float: right"
-              width="40%"
-            />
             <!-- watani felt that arcade games only appealed to men for their crude graphics and violence,[16] and that arcades in general were seen as seedy environments.[18] For his next project, Iwatani chose to create a non-violent, cheerful video game that appealed mostly to women,[19] as he believed that attracting women and couples into arcades would potentially make them appear to be much-more family friendly in tone.[16] Iwatani began thinking of things that women liked to do in their time; he decided to center his game around eating, basing this off of women liking to eat desserts and other sweets.[20] His game was initially called Pakkuman, based on the Japanese onomatopoeia term “paku paku taberu”,[21] referencing the mouth movement of opening and closing in succession.[22] -->
+          </section>
+          <section>
+            <img class="stretch" src="assets/ijustine-pacman-cake.jpg" />
           </section>
           <!-- https://www.geek.com/games/original-pac-man-created-to-attract-women-to-arcades-because-women-like-to-eat-1643664/ -->
           <section>
@@ -239,7 +236,7 @@
           </section>
           <section>
             <h3>A 360 degree panorama photo in WebVR</h3>
-            <pre><code  data-trim class="line-numbers">&lt;!doctype html&gt;
+            <pre><code  data-trim class="line-numbers" style="max-height: 250px">&lt;!doctype html&gt;
 &lt;!--
 Copyright 2016 The Chromium Authors. All rights reserved.
 Use of this source code is governed by a BSD-style license that can be
@@ -573,7 +570,6 @@ found in the LICENSE file.
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
             <ul>
-              <li>Less code</li>
               <li class="fragment">Automatic polyfills</li>
               <li class="fragment">
                 Implement VR mode, get non-VR mode for free
@@ -649,6 +645,15 @@ found in the LICENSE file.
               Started of with horror version... ended with classic
             </p>
           </section>
+          <section>
+            <h3>How to control it?</h3>
+            <ul>
+              <li class="fragment">No WASD or arrow keys</li>
+              <li class="fragment">We can look around</li>
+              <li class="fragment">Move in the direction we're looking!</li>
+              <li class="fragment">Challenge of constant speed</li>
+            </ul>
+          </section>
         </section>
         <section>
           <section>
@@ -658,9 +663,30 @@ found in the LICENSE file.
             <h3>Usage of Vue</h3>
             <ul>
               <li><em>computed</em> properties = reactivity</li>
-              <li class="fragment">Declarative implementation</li>
-              <li class="fragment">Allows for components</li>
+              <li>Declarative implementation</li>
+              <li>Allows for components</li>
             </ul>
+            <pre><code  data-trim class="line-numbers lang-js" data-highlight-lines="7-10,15,16">export default Vue.extend({
+  components: {
+    Maze
+  },
+  data: function() {
+    return {
+      position: {
+        x: 20,
+        y: 0,
+        z: 20
+	  }
+    };
+  },
+  computed: {
+    cameraPosition(): string {
+	  return `${this.position.x} ${this.position.y} ${this.position.z}`;
+    }
+  }
+});</code></pre>
+          </section>
+          <section>
             <pre><code data-trim class="line-numbers" data-highlight-lines="2,3,6,8,9,12,14">
 &lt;a-scene&gt;
   &lt;a-entity id=&quot;rig&quot; :position=&quot;cameraPosition&quot;&gt;
@@ -687,7 +713,13 @@ found in the LICENSE file.
                 Free movement on <em>x-axis</em>, <em>y-axis</em> and
                 <em>z-axis</em>
               </li>
-              <li class="fragment">
+            </ul>
+            <img src="assets/right-hand-rule.png" class="fragment" alt="" />
+          </section>
+          <section>
+            <h3>Add some lighting</h3>
+            <ul>
+              <li>
                 Add lightsources
                 <ul>
                   <li>Ambient light</li>
@@ -700,7 +732,6 @@ found in the LICENSE file.
             ><code data-trim class="line-numbers">&lt;a-entity light=&quot;type: ambient; intensity: 0.5;&quot;&gt;&lt;/a-entity&gt;
 &lt;a-entity light=&quot;type: point; castShadow: false; intensity: 1;&quot;
 :position=&quot;cameraPosition&quot;&gt;&lt;/a-entity&gt;</code></pre>
-            <img src="assets/right-hand-rule.png" class="fragment" alt="" />
           </section>
           <section>
             <h3>Rendering the maze</h3>
